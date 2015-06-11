@@ -30,10 +30,15 @@ public class MainActivity extends Activity
 			public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
 			{
 				String unicode = in.getText().toString();
-				
-				int cp = Integer.parseInt("0x" + unicode);
+				int cp;
+				try
+				{
+					cp = Integer.valueOf(unicode, 16);
+				}
+				catch(Exception e)
+				{cp = 32;}
 				char output = Character.toChars(cp)[0];
-				out.setText(output);
+				out.setText(String.valueOf(output));
 			}
 
 			@Override
