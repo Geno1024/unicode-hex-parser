@@ -17,5 +17,13 @@
 		android:ems="10"
 		android:id="@+id/out"/>
 
+	<ToggleButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:textOff="Unicode 2 Char"
+		android:textOn="Char 2 Unicode"
+		android:text="Unicode 2 Char"
+		android:id="@+id/swi"/>
+
 </LinearLayout>
 
