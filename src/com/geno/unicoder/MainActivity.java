@@ -5,11 +5,14 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.text.*;
+import android.view.View.*;
 
 public class MainActivity extends Activity
 {
 	public EditText in, out;
 	public ToggleButton s;
+	public Button[] b;
+	public int[] id;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -17,6 +20,13 @@ public class MainActivity extends Activity
 		setContentView(R.layout.main);
 		in = (EditText) findViewById(R.id.in);
 		out = (EditText) findViewById(R.id.out);
+		id = new int[17];
+		b = new Button[17];
+		for(int i = 0; i < 17; i++)
+		{
+			id[i] = R.id.bksp + i;
+			b[i] = (Button) findViewById(id[i]);
+		}
 		s = (ToggleButton) findViewById(R.id.swi);
 		in.setHint("Hex without 0x prefix here. For example 41.");
 		TextWatcher indeal = new TextWatcher()
@@ -92,5 +102,22 @@ public class MainActivity extends Activity
 		};
 		in.addTextChangedListener(indeal);
 		out.addTextChangedListener(outdeal);
+		OnClickListener c = new OnClickListener()
+		{
+			@Override
+			public void onClick(View p1)
+			{
+				String s = in.getText().toString();
+				int l = s.length();
+				int vid = p1.getId();
+				if(vid == id[0])
+				{
+					if(l == 0)return;
+					else in.setText(s.substring(0,l-1));
+				}
+			}
+		};
+		for(int i = 0; i < 17; i++)
+			b[i].setOnClickListener(c);
 	}
 }
