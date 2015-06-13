@@ -1,5 +1,7 @@
 package com.geno.unicoder;
 
+import java.util.Locale;
+
 import android.app.*;
 import android.os.*;
 import android.view.*;
@@ -91,7 +93,7 @@ public class MainActivity extends Activity
 				{
 					cp = 0;
 				}
-				String output = Integer.toHexString(cp).toUpperCase();
+				String output = Integer.toHexString(cp).toUpperCase(Locale.ENGLISH);
 				in.setText(output);
 			}
 
@@ -115,6 +117,7 @@ public class MainActivity extends Activity
 					if(l == 0)return;
 					else in.setText(s.substring(0,l-1));
 				}
+				else in.setText(s + (new char[]{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'})[p1.getId()-id[0]-1]);
 			}
 		};
 		for(int i = 0; i < 17; i++)
